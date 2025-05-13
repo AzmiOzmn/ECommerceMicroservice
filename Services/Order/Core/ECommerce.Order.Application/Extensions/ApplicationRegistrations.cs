@@ -1,10 +1,6 @@
 ﻿using ECommerce.Order.Application.Features.CQRS.Handlers;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 
 
@@ -16,6 +12,13 @@ namespace ECommerce.Order.Application.Extensions
         {
             services.AddScoped<GetAdressQueryHandler>();
             services.AddScoped<GetAdressByIdQueryHandler>();
+            services.AddScoped<CreateAdressCommandHandler>();
+            services.AddScoped<UpdateAdressCommandHandler>();
+            services.AddScoped<RemoveAdressCommandHandler>();
+            services.AddMediatR(config =>
+            {
+                config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            });
 
         }
     }

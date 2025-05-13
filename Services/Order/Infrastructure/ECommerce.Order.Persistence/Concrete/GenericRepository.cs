@@ -1,12 +1,6 @@
 ﻿using ECommerce.Order.Application.Interfaces;
-
 using ECommerce.Order.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerce.Order.Persistence.Concrete
 {
@@ -15,8 +9,8 @@ namespace ECommerce.Order.Persistence.Concrete
         private readonly DbSet<T> Table = context.Set<T>();
         public async Task CreateAsync(T entity)
         {
-          await context.AddAsync(entity);
-          await context.SaveChangesAsync();
+            await context.AddAsync(entity);
+            await context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
@@ -28,12 +22,12 @@ namespace ECommerce.Order.Persistence.Concrete
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-           return await Table.ToListAsync(); 
+            return await Table.ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)
         {
-           return await Table.FindAsync(id);
+            return await Table.FindAsync(id);
         }
 
         public async Task UpdateAsync(T entity)
